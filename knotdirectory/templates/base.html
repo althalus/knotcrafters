@@ -53,18 +53,33 @@
     </div>
 
     <div class="container">
+        <div class="offset1 span11"><h1>{% block page_title %}Welcome to Cordcrafters{% endblock page_title %}</h1></div>
+        <div class="row">
+            <div class="span2">
+                <div class="well well-small">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Browse...</li>
+                        <li><a href="/knots/">Everything</a></li>
+                        <li><a href="/bracelet/">Bracelets</a></li>
+                        <li><a href="/keychain/">Keychains</a></li>
+                        <li><a href="/lanyard/">lanyards</a></li>
+                        <li><a href="#">By Creator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span10">
 
-      <h1>{% block page_title %}Welcome to Cordcrafters{% endblock page_title %}</h1>
 
-      {% block content %}
-      <p>Cordcrafters.com is a website put together by the community for the
-      community. Here you can find a searchable index of tutorials for knots
-      and ties discovered, invented, or otherwise found by the paracord
-      community.</p>
-      <p>We are a very new site, so if you want to help out, please 
-      <a href="/about">do so!</a></p>
-      {% endblock content %}
-
+                {% block content %}
+                <p>Cordcrafters.com is a website put together by the community for the
+                community. Here you can find a searchable index of tutorials for knots
+                and ties discovered, invented, or otherwise found by the paracord
+                community.</p>
+                <p>We are a very new site, so if you want to help out, please 
+                <a href="/about">do so!</a></p>
+                {% endblock content %}
+            </div>
+        </div>
     </div> <!-- /container -->
 
     <!-- Le javascript
