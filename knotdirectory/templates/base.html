@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load navtags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,9 +44,10 @@
           <a class="brand" href="#">knotdirectory</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+                <li class="{% navactive request 'index' %}"><a href="/">Home</a></li>
+                <li class="{% navactive request 'knots.list knots.detail knots.list_by_tag' %}"><a href="/knots/">Knots</a></li>
+              <li class="{% navactive request 'about' %}"><a href="/about">About</a></li>
+              <li class="{% navactive request 'contact' %}"><a href="/contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,10 +61,10 @@
                 <div class="well well-small">
                     <ul class="nav nav-list">
                         <li class="nav-header">Browse...</li>
-                        <li><a href="/knots/">Everything</a></li>
-                        <li><a href="/bracelet/">Bracelets</a></li>
-                        <li><a href="/keychain/">Keychains</a></li>
-                        <li><a href="/lanyard/">lanyards</a></li>
+                        <li><a href="{% url "knots.list" %}">Everything</a></li>
+                        <li><a href="{% url "knots.list_by_tag" "bracelet" %}">Bracelets</a></li>
+                        <li><a href="{% url "knots.list_by_tag" "keychain" %}">Keychains</a></li>
+                        <li><a href="{% url "knots.list_by_tag" "lanyard" %}">Lanyards</a></li>
                         <li><a href="#">By Creator</a></li>
                     </ul>
                 </div>

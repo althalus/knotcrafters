@@ -7,9 +7,9 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
-    url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name='index'),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
+    url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
 
     # Examples:
     # url(r'^$', 'knotdirectory.views.home', name='home'),
