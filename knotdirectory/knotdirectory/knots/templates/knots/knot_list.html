@@ -8,10 +8,10 @@
 {% if object_list %}
     <ul class="thumbnails">
     {% for knot in object_list %}
-    <li class="span4">
+    <li class="span3">
     <div class="thumbnail">
-        <a href=" {{knot.get_absolute_url }}">
-            <img src="{% thumbnail knot.photo "140x140" %}">
+        <a href="{{ knot.get_absolute_url }}">
+            <img src="{% thumbnail knot.photo "252x252" %}">
             <h4>{{ knot.name }}</h4>
         </a>
     </div>
