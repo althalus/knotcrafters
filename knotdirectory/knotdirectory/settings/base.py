@@ -246,3 +246,7 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
+
+########## THUMBNAIL CONFIG
+THUMBNAIL_DEBUG = DEBUG
+########## END THUMBNAIL CONFIG
