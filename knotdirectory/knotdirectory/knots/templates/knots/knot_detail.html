@@ -2,10 +2,9 @@
 {% load thumbnail %}
 {% block page_title %}{{ object.name }}{% endblock %}
 {% block content %}
-<h3 class="muted">By {{ object.creator }}</h3>
 <div class="row">
-    <div class="span5"><img src="{% thumbnail object.photo "600x600" %}"></div>
-    <div class="span7">
+    <div class="span6">
+        <h3 class="muted">By {{ object.creator }}</h3>
         <p>{{ object.notes }}</p>
         <h3>Guides</h3>
         <ul>
@@ -14,5 +13,6 @@
             {% endfor %}
         </ul>
     </div>
+    <div class="span4"><img src="{% thumbnail object.photo "600x600" %}"></div>
 </div>
 {% endblock content %}
