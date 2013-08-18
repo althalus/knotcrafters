@@ -1,25 +1,35 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block page_title %}Browse Knots...{% endblock %}
 
 {% block content %}
 
-{% if objects %}
-    {% for knot in objects %}
-    <div class="span4">a knot</div>
+{% if object_list %}
+    <ul class="thumbnails">
+    {% for knot in object_list %}
+    <li class="span4">
+    <div class="thumbnail">
+        <a href=" {{knot.get_absolute_url }}">
+            <img src="{% thumbnail knot.photo "140x140" %}">
+            <h4>{{ knot.name }}</h4>
+        </a>
+    </div>
+    </li>
+
     {% endfor %}
 
     {% if is_paginated %}
     <div class="pagination">
         <span class="page-links">
             {% if page_obj.has_previous %}
-            <a href="/cars?page={{ page_obj.previous_page_number }}">previous</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
             {% endif %}
             <span class="page-current">
                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
             </span>
             {% if page_obj.has_next %}
-            <a href="/cars?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
             {% endif %}
         </span>
     </div>
