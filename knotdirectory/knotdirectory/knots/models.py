@@ -1,6 +1,12 @@
 from django.db import models
 from taggit.managers import TaggableManager
 from django.core.urlresolvers import reverse
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Knot(models.Model):
@@ -17,7 +23,7 @@ class Knot(models.Model):
         return reverse("knots.detail", args=[self.pk, ])
 
     def __unicode__(self):
-        return u'Knot: %s' % self.name
+        return u'%s' % self.name
 
 
 class Link(models.Model):
@@ -27,3 +33,27 @@ class Link(models.Model):
 
     def __unicode__(self):
         return u'Link %s on knot %s' % (self.name, self.knot.name)
+
+
+class Action(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    user = models.ForeignKey(User)
+    when = models.DateTimeField(auto_now=True)
+    what = models.TextField()
+
+    def __unicode__(self):
+        return u'%s: %s %s %s' % (self.when, self.user, self.what, self.content_object)
+
+
+class CreatorProfile(models.Model):
+    name = models.CharField(max_length=90)
+    link_facebook_profile = models.URLField(blank=True)
+    link_youtube_channel = models.URLField(blank=True)
+    link_website = models.URLField(blank=True)
+    email = models.EmailField(blank=True)
+    user = models.ForeignKey(User, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.name
