@@ -1,6 +1,7 @@
 """Common settings and globals."""
 
 
+import os
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
@@ -197,6 +198,7 @@ THIRD_PARTY_APPS = (
     'south',
     'taggit',
     'easy_thumbnails',
+    'social_auth',
 )
 
 # Apps specific for this project go here.
@@ -250,3 +252,13 @@ WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## THUMBNAIL CONFIG
 THUMBNAIL_DEBUG = DEBUG
 ########## END THUMBNAIL CONFIG
+
+########## AUTHENTICATION CONFIGURATION
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+FACEBOOK_APP_ID = os.environ.get('FACEBOOK_APP_ID')
+FACEBOOK_API_SECRET = os.environ.get('FACEBOOK_API_SECRET')
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+######### END AUTHENTICATION BACKENDS

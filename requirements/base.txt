@@ -7,3 +7,4 @@ South==0.8.1
 django-taggit
 pillow
 easy-thumbnails
+django-social-auth

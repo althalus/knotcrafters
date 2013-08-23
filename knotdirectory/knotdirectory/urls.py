@@ -10,6 +10,7 @@ urlpatterns = patterns(
     url(r'^$', TemplateView.as_view(template_name='base.html'), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    url(r'', include('social_auth.urls')),
 
     # Examples:
     # url(r'^$', 'knotdirectory.views.home', name='home'),
