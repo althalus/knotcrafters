@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block page_title %}Creators{% endblock %}
+{% block content %}
+{% for creator in object_list %}
+<div class="row">
+    <div class="span10">
+        <h3><a href="{{ creator.get_absolute_url }}">{{ creator.name}}</a></h3>
+        <ul class="thumbnails">
+            {% for knot in creator.knot_set.all|slice:":4" %}
+            <li class="span2">
+            <div class="thumbnail">
+                <a href="{{ knot.get_absolute_url }}">
+                    <img src="{% thumbnail knot.photo "202x202" %}">
+                    <h4>{{ knot.name }}</h4>
+                </a>
+            </div>
+        </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+{% endblock content %}
