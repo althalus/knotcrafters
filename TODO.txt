@@ -1,0 +1,7 @@
+* The README.
+* Get some people to do some testing
+* Add a Knot page
+* Update Knot page
+* Ability to Link creator profiles to user accounts
+* Facebook comments
+* Update creator profiles
