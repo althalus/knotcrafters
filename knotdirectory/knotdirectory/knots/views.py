@@ -1,10 +1,14 @@
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 from models import Knot, CreatorProfile
 
 from .forms import LinkFormset, KnotForm
 
 from .inlineformsetsviews import InlineFormsetsCreateView
+from .inlineformsetsviews import InlineFormsetsUpdateView
 
 
 class KnotListView(ListView):
@@ -46,3 +50,16 @@ class CreateKnotView(InlineFormsetsCreateView):
     model = Knot
     form = KnotForm
     formsets = [LinkFormset, ]
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(CreateKnotView, self).dispatch(*args, **kwargs)
+
+class UpdateKnotView(InlineFormsetsUpdateView):
+    model = Knot
+    form = KnotForm
+    formsets = [LinkFormset, ]
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(UpdateKnotView, self).dispatch(*args, **kwargs)
