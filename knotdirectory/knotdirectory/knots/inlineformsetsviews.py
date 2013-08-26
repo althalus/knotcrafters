@@ -58,3 +58,7 @@ class InlineFormsetsUpdateView(FormsetsMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         return super(InlineFormsetsUpdateView, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(InlineFormsetsUpdateView, self).post(request, *args, **kwargs)
