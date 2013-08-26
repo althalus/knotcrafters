@@ -2,6 +2,10 @@ from django.views.generic import ListView, DetailView
 
 from models import Knot, CreatorProfile
 
+from .forms import LinkFormset, KnotForm
+
+from .inlineformsetsviews import InlineFormsetsCreateView
+
 
 class KnotListView(ListView):
     model = Knot
@@ -36,3 +40,9 @@ class CreatorDetailView(DetailView):
         queryset = super(CreatorDetailView, self).get_queryset()
         queryset.prefetch_related('knot_set')
         return queryset
+
+
+class CreateKnotView(InlineFormsetsCreateView):
+    model = Knot
+    form = KnotForm
+    formsets = [LinkFormset, ]

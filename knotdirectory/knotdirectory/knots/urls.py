@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from .views import KnotListView, KnotDetailView, CreatorListView, CreatorDetailView
+from .views import KnotListView, KnotDetailView, CreatorListView, CreatorDetailView, CreateKnotView
 
 urlpatterns = patterns(
     '',
@@ -9,5 +9,6 @@ urlpatterns = patterns(
     url(r'^knot/(?P<pk>\d+)/', KnotDetailView.as_view(), name="knots.detail"),
     url(r'^creators/', CreatorListView.as_view(), name="creators.list"),
     url(r'^creator/(?P<pk>\d+)/', CreatorDetailView.as_view(), name="creators.detail"),
+    url(r'add/', CreateKnotView.as_view(), name='knots.create'),
 
 )
