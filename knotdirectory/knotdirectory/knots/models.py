@@ -18,7 +18,7 @@ class Knot(models.Model):
     tags = TaggableManager()
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    photo = models.ImageField(upload_to="knotsimages/%Y/%m/", help_text="A photo of the completed tie.", null=True, blank=True)
+    photo = models.ImageField(upload_to="knotsimages/%Y/%m/", help_text="A photo of the completed tie.")
 
     def save(self):
         if not self.creator:
@@ -65,6 +65,7 @@ class CreatorProfile(models.Model):
     link_website = models.URLField(blank=True)
     email = models.EmailField(blank=True)
     user = models.ForeignKey(User, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % self.name
