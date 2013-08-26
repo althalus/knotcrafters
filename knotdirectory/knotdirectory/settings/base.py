@@ -258,6 +258,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.facebook.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+LOGIN_URL = '/login/facebook/'
 FACEBOOK_APP_ID = os.environ.get('FACEBOOK_APP_ID')
 FACEBOOK_API_SECRET = os.environ.get('FACEBOOK_API_SECRET')
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
