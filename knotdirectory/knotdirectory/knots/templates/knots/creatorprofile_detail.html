@@ -4,7 +4,8 @@
 {% block page_title %} {{ object.name}} {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="span10">
+    <div class="span5">{{ object.bio }}</div>
+    <div class="span5">
         <ul>
             {% if object.email %}<li><a href="mailto:{{ object.email }}"><i class="icon-envelope-alt"></i> email {{ object.name }}</a></li>{% endif %}
             {% if object.link_facebook %}<li><a href="{{ object.link_facebook }}"><i class="icon-facebook"></i> {{ object.name }} on facebook</a></li>{% endif%}
