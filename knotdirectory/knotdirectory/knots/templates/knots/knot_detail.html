@@ -9,7 +9,7 @@
     <div class="span9 well">
         <div class="row">
     <div class="span5">
-        <div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-width="150" data-layout="button_count" data-show-faces="true" data-send="true"></div>
+        <div class="fb-like" data-href="{{request.build_absolute_uri}}" data-width="150" data-layout="button_count" data-show-faces="true" data-send="true"></div>
         <h3 class="muted">By {{ object.creator }}</h3>
         {% if object.other_names %}
         <h4>Also known as...</h4>
