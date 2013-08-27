@@ -13,7 +13,7 @@ class Knot(models.Model):
     name = models.CharField(max_length=90, help_text="Commonly accepted name for this tie")
     other_names = models.TextField(help_text="Is this knot known by other names? One name per line, please", blank=True)
     creator_name = models.CharField(max_length=90, help_text="Who should we credit for discovering this tie")
-    creator = models.ForeignKey('CreatorProfile', blank=True, null=True)
+    creator = models.ForeignKey('CreatorProfile', blank=True, null=True, editable=False)
     notes = models.TextField(help_text="Any other information? Markdown text enabled.", blank=True)
     tags = TaggableManager()
     date_added = models.DateTimeField(auto_now_add=True)
@@ -28,6 +28,7 @@ class Knot(models.Model):
                 cp = CreatorProfile()
                 cp.name = self.creator_name
                 cp.save()
+                self.creator = cp
         super(Knot, self).save()
 
     def get_absolute_url(self):
