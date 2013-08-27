@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% load linktags %}
-{% block page_title %}{{ object.name }}{% endblock %}
+{% block page_title %}{{ object.name }}
+<span="pull-right"><a href="{% url "knots.update" object.pk %}" class="btn-small btn"><i class="icon-pencil"></i> Update</a></span>
+{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="span6">
+    <div class="span9 well">
+        <div class="row">
+    <div class="span5">
+        <div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-width="150" data-layout="button_count" data-show-faces="true" data-send="true"></div>
         <h3 class="muted">By {{ object.creator }}</h3>
         {% if object.other_names %}
         <h4>Also known as...</h4>
@@ -16,6 +21,8 @@
         {% endif %}
     </div>
     <div class="span4"><a href="{{object.photo.url}}"><img src="{% thumbnail object.photo "300x300" %}"></a></div>
+</div>
+</div>
         <h3>Guides</h3>
         <ul>
             {% for link in object.link_set.all %}
