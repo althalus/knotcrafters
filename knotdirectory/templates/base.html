@@ -60,7 +60,7 @@
               <li class="{% navactive request 'contact' %}"><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-                <li>{% if request.user.is_authenticated %}<p class="navbar-text">Welcome, {{ request.user.first_name }}</p>{% else %}<a href="/login/facebook/">Log in with Facebook</a>{% endif %}</li>
+                <li>{% if request.user.is_authenticated %}<p class="navbar-text">Welcome, {{ request.user.first_name }}</p>{% else %}<a href="/login/facebook/?next={{request.path}}">Log in with Facebook</a>{% endif %}</li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -79,6 +79,8 @@
                         <li><a href="{% url "knots.list_by_tag" "keychain" %}">Keychains</a></li>
                         <li><a href="{% url "knots.list_by_tag" "lanyard" %}">Lanyards</a></li>
                         <li><a href="#">By Creator</a></li>
+                        <li class="nav-header">Help out...</li>
+                        <li><a href="{% url "knots.create" %}">Add a Tie</a></li>
                     </ul>
                 </div>
             </div>
