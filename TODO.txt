@@ -4,3 +4,4 @@
 * Facebook comments?
 * Update creator profiles
 * auto-embed more stuff - Flickr, instagram, vimeo...?
+* autocomplete for tags, creator
