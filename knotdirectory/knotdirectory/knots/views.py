@@ -58,7 +58,7 @@ class CreateKnotView(InlineFormsetsCreateView):
 
 class UpdateKnotView(InlineFormsetsUpdateView):
     model = Knot
-    form = KnotForm
+    form_class = KnotForm
     formsets = [LinkFormset, ]
 
     @method_decorator(login_required)
@@ -70,5 +70,5 @@ class AutocompleteTagView(JSONResponseMixin, View):
     def get(self, request, *args, **kwargs):
         q = self.request.GET.get('q', '')
         tags = Tag.objects.filter(name__istartswith=q)
-        context = map(lambda x: x.name, tags)
+        context = map(lambda x: {'id': x.name, 'text': x.name}, tags)
         return self.render_json_response(context)
