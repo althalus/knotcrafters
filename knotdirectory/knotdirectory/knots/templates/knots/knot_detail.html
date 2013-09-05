@@ -19,6 +19,10 @@
         <h4>Notes</h4>
         <p>{{ object.notes }}</p>
         {% endif %}
+        {% if object.tags.all %}
+        <h4>Tags</h4>
+        {% for tag in object.tags.all %}<a href="{% url 'knots.list_by_tag' tag.slug %}">{{tag.name}}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% endif %}
     </div>
     <div class="span4"><a href="{{object.photo.url}}"><img src="{% thumbnail object.photo "300x300" %}"></a></div>
 </div>
