@@ -1,12 +1,12 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+from taggit.models import Tag
+from braces.views import JSONResponseMixin
 
 from models import Knot, CreatorProfile
-
 from .forms import LinkFormset, KnotForm
-
 from .inlineformsetsviews import InlineFormsetsCreateView
 from .inlineformsetsviews import InlineFormsetsUpdateView
 
@@ -55,6 +55,7 @@ class CreateKnotView(InlineFormsetsCreateView):
     def dispatch(self, *args, **kwargs):
         return super(CreateKnotView, self).dispatch(*args, **kwargs)
 
+
 class UpdateKnotView(InlineFormsetsUpdateView):
     model = Knot
     form = KnotForm
@@ -63,3 +64,11 @@ class UpdateKnotView(InlineFormsetsUpdateView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(UpdateKnotView, self).dispatch(*args, **kwargs)
+
+
+class AutocompleteTagView(JSONResponseMixin, View):
+    def get(self, request, *args, **kwargs):
+        q = self.request.GET.get('q', '')
+        tags = Tag.objects.filter(name__istartswith=q)
+        context = map(lambda x: x.name, tags)
+        return self.render_json_response(context)
